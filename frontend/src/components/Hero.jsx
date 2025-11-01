@@ -4,7 +4,8 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section className="relative flex flex-col justify-center items-center text-center h-screen bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 text-white overflow-hidden">
+    <section id="hero" 
+    className="relative flex flex-col justify-center items-center text-center h-screen bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 text-white overflow-hidden">
       {/* Animation d'apparition */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}

@@ -1,9 +1,14 @@
-/* eslint-disable no-unused-vars */
+// eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
-/* eslint-enable no-unused-vars */
 
 export default function Navbar() {
-  const links = ["Accueil", "À propos", "Projets", "Contact"];
+  const links = [
+    { name: "Accueil", href: "#" },
+    { name: "À propos", href: "#about" },
+    { name: "Projets", href: "#projects" },
+    { name: "Contact", href: "#contact" },
+    { name: "Accueil", href: "#hero" }
+  ];
 
   return (
     <motion.nav
@@ -21,16 +26,17 @@ export default function Navbar() {
           LB<span className="text-pink-400">.</span>
         </motion.h1>
 
-        {/* Navigation Links */}
+        {/* Liens */}
         <ul className="flex gap-6 text-white font-medium">
           {links.map((link, index) => (
             <motion.li
               key={index}
-              whileHover={{ scale: 1.1, color: "#f472b6" }}
+              whileHover={{ scale: 1.1 }}
               transition={{ type: "spring", stiffness: 300 }}
-              className="cursor-pointer"
             >
-              {link}
+              <a href={link.href} className="hover:text-pink-400 transition">
+                {link.name}
+              </a>
             </motion.li>
           ))}
         </ul>
