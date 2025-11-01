@@ -1,14 +1,39 @@
+import { useEffect, useState } from "react";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 
 export default function Navbar() {
+  const [activeSection, setActiveSection] = useState("hero");
+
   const links = [
-    { name: "Accueil", href: "#" },
+    { name: "Accueil", href: "#hero" },
     { name: "À propos", href: "#about" },
     { name: "Projets", href: "#projects" },
     { name: "Contact", href: "#contact" },
-    { name: "Accueil", href: "#hero" }
   ];
+
+  // ✅ Observer pour détecter quelle section est visible
+  useEffect(() => {
+    const sections = document.querySelectorAll("section");
+    const options = {
+      root: null,
+      threshold: 0.5, // 50 % visible = active
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    }, options);
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => {
+      sections.forEach((section) => observer.unobserve(section));
+    };
+  }, []);
 
   return (
     <motion.nav
@@ -34,7 +59,14 @@ export default function Navbar() {
               whileHover={{ scale: 1.1 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <a href={link.href} className="hover:text-pink-400 transition">
+              <a
+                href={link.href}
+                className={`transition ${
+                  activeSection === link.href.replace("#", "")
+                    ? "text-pink-400 font-semibold"
+                    : "text-white hover:text-pink-300"
+                }`}
+              >
                 {link.name}
               </a>
             </motion.li>
