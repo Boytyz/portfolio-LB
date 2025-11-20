@@ -1,78 +1,87 @@
+// src/components/Navbar.jsx
 import { useEffect, useState } from "react";
-// eslint-disable-next-line no-unused-vars
-import { motion } from "framer-motion";
+
+const navLinks = [
+  { id: "home", label: "Accueil" },
+  { id: "about", label: "À propos" },
+  { id: "skills", label: "Compétences" },
+  { id: "projects", label: "Projets" },
+  { id: "formations", label: "Formations" },
+  { id: "contact", label: "Contact" },
+];
 
 export default function Navbar() {
-  const [activeSection, setActiveSection] = useState("hero");
+  const [active, setActive] = useState("home");
+  const [scrolled, setScrolled] = useState(false);
 
-  const links = [
-    { name: "Accueil", href: "#hero" },
-    { name: "À propos", href: "#about" },
-    { name: "Projets", href: "#projects" },
-    { name: "Contact", href: "#contact" },
-  ];
-
-  // ✅ Observer pour détecter quelle section est visible
+  // Gérer le scroll pour :
+  // - changer le style de la navbar
+  // - détecter quelle section est active
   useEffect(() => {
-    const sections = document.querySelectorAll("section");
-    const options = {
-      root: null,
-      threshold: 0.5, // 50 % visible = active
-    };
+    const onScroll = () => {
+      setScrolled(window.scrollY > 10);
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
+      const scrollPos = window.scrollY + 120; // offset pour tenir compte de la navbar
+      for (const link of navLinks) {
+        const section = document.getElementById(link.id);
+        if (!section) continue;
+
+        const top = section.offsetTop;
+        const bottom = top + section.offsetHeight;
+
+        if (scrollPos >= top && scrollPos < bottom) {
+          setActive(link.id);
+          break;
         }
-      });
-    }, options);
-
-    sections.forEach((section) => observer.observe(section));
-
-    return () => {
-      sections.forEach((section) => observer.unobserve(section));
+      }
     };
+
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  return (
-    <motion.nav
-      className="fixed top-0 left-0 w-full z-50 bg-white/10 backdrop-blur-md shadow-md"
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
-    >
-      <div className="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
-        {/* Logo */}
-        <motion.h1
-          className="text-2xl font-bold text-white tracking-widest"
-          whileHover={{ scale: 1.1 }}
-        >
-          LB<span className="text-pink-400">.</span>
-        </motion.h1>
+  const handleClick = (id) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.scrollIntoView({ behavior: "smooth" });
+  };
 
-        {/* Liens */}
-        <ul className="flex gap-6 text-white font-medium">
-          {links.map((link, index) => (
-            <motion.li
-              key={index}
-              whileHover={{ scale: 1.1 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              <a
-                href={link.href}
-                className={`transition ${
-                  activeSection === link.href.replace("#", "")
-                    ? "text-pink-400 font-semibold"
-                    : "text-white hover:text-pink-300"
-                }`}
+  return (
+    <header
+      className={`fixed top-0 inset-x-0 z-50 transition-all
+      ${scrolled ? "backdrop-blur bg-slate-950/70 border-b border-slate-800" : "bg-transparent"}`}
+    >
+      <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        {/* Logo / Nom */}
+        <div className="font-semibold tracking-tight text-lg flex items-center gap-1">
+          <span className="text-indigo-400">LB</span>
+          <span className="text-slate-100">Portfolio</span>
+        </div>
+
+        {/* Liens desktop */}
+        <ul className="hidden md:flex items-center gap-6 text-sm">
+          {navLinks.map((link) => (
+            <li key={link.id}>
+              <button
+                onClick={() => handleClick(link.id)}
+                className={`transition-colors border-b-2 pb-0.5
+                  ${
+                    active === link.id
+                      ? "text-indigo-400 border-indigo-400"
+                      : "text-slate-300 border-transparent hover:text-white"
+                  }`}
               >
-                {link.name}
-              </a>
-            </motion.li>
+                {link.label}
+              </button>
+            </li>
           ))}
         </ul>
-      </div>
-    </motion.nav>
+
+        {/* TODO: plus tard → menu mobile burger */}
+        <button className="md:hidden text-sm text-slate-300 border border-slate-600 px-3 py-1 rounded-full">
+          Menu
+        </button>
+      </nav>
+    </header>
   );
 }

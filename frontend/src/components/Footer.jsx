@@ -1,10 +1,13 @@
+// src/components/Footer.jsx
 export default function Footer() {
+  const year = new Date().getFullYear();
+
   return (
-    <footer className="bg-gray-800 text-gray-400 py-6 text-center">
-      <p>
-        © {new Date().getFullYear()} <span className="text-pink-400 font-semibold">Léo B.</span> — 
-        Tous droits réservés.
-      </p>
+    <footer className="border-t border-slate-800 mt-16">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-xs text-slate-500 flex flex-col sm:flex-row gap-2 sm:gap-0 justify-between">
+        <span>© {year} Boytyz. Tous droits réservés.</span>
+        <span>Construit avec React & Tailwind CSS.</span>
+      </div>
     </footer>
   );
 }

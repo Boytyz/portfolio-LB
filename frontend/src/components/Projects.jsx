@@ -1,62 +1,84 @@
-/* eslint-disable no-unused-vars */
-import { motion } from "framer-motion";
+// src/components/Projects.jsx
 
 const projects = [
   {
-    title: "Site e-commerce de figurines",
-    description: "Un site de vente en ligne pour les fans de mangas, avec React et Node.js.",
-    tech: ["React", "Node.js", "MongoDB"],
+    title: "Portfolio LB",
+    description:
+      "Mon portfolio personnel, développé avec React et Tailwind CSS. Présentation de mes projets et de mon profil.",
+    tech: ["React", "Tailwind CSS"],
+    link: "https://github.com/Boytyz/portfolio-LB",
+    type: "Personnel",
   },
   {
-    title: "Application IA simplifiée",
-    description: "Prototype d'application d'analyse d'images avec Python et Flask.",
-    tech: ["Python", "Flask", "OpenAI API"],
-  },
-  {
-    title: "Portfolio personnel",
-    description: "Mon propre site, créé pour mettre en avant mes compétences et mes projets.",
-    tech: ["React", "TailwindCSS", "Framer Motion"],
+    title: "Projet Exemple",
+    description:
+      "Un projet que tu pourras décrire ici (application web, landing page, dashboard...).",
+    tech: ["React", "API", "UI/UX"],
+    link: "#",
+    type: "Exemple",
   },
 ];
 
 export default function Projects() {
   return (
-    <section
-      id="projects"
-      className="min-h-screen bg-gray-800 text-white flex flex-col justify-center items-center px-6 py-16"
-    >
-      <motion.h2
-        className="text-5xl font-bold mb-12 text-indigo-400"
-        initial={{ opacity: 0, y: -30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
-      >
-        Mes projets
-      </motion.h2>
+    <div className="space-y-8">
+      <header>
+        <p className="text-xs uppercase tracking-[0.25em] text-indigo-400">
+          Projets
+        </p>
+        <h2 className="text-3xl sm:text-4xl font-semibold mt-2">
+          Quelques réalisations
+        </h2>
+        <p className="text-sm text-slate-400 mt-2 max-w-xl">
+          Une sélection de projets sur lesquels j&apos;ai travaillé récemment. 
+          D&apos;autres sont disponibles sur mon GitHub.
+        </p>
+      </header>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl">
-        {projects.map((project, index) => (
-          <motion.div
-            key={index}
-            className="bg-white/10 backdrop-blur-lg p-6 rounded-2xl shadow-md hover:shadow-pink-400/40 transition"
-            whileHover={{ scale: 1.05 }}
-            transition={{ type: "spring", stiffness: 300 }}
+      <div className="grid md:grid-cols-2 gap-6">
+        {projects.map((project) => (
+          <article
+            key={project.title}
+            className="group relative rounded-2xl border border-slate-800 bg-slate-900/40 p-5
+                       hover:border-indigo-500/70 hover:-translate-y-1 transition"
           >
-            <h3 className="text-2xl font-semibold mb-2 text-pink-400">{project.title}</h3>
-            <p className="text-gray-300 mb-4">{project.description}</p>
-            <div className="flex flex-wrap gap-2">
-              {project.tech.map((t, i) => (
+            <div className="flex items-center justify-between gap-3 mb-3">
+              <h3 className="text-lg font-semibold group-hover:text-indigo-400">
+                {project.title}
+              </h3>
+              <span className="text-[11px] px-2 py-1 rounded-full bg-slate-800 text-slate-300">
+                {project.type}
+              </span>
+            </div>
+
+            <p className="text-sm text-slate-300 mb-4">
+              {project.description}
+            </p>
+
+            <div className="flex flex-wrap gap-2 mb-4">
+              {project.tech.map((t) => (
                 <span
-                  key={i}
-                  className="bg-pink-500/20 text-pink-300 text-sm px-3 py-1 rounded-full"
+                  key={t}
+                  className="text-[11px] px-2 py-1 rounded-full bg-slate-800 text-slate-200"
                 >
                   {t}
                 </span>
               ))}
             </div>
-          </motion.div>
+
+            {project.link && project.link !== "#" && (
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noreferrer"
+                className="text-sm text-indigo-400 hover:text-indigo-300 underline underline-offset-4"
+              >
+                Voir le code
+              </a>
+            )}
+          </article>
         ))}
       </div>
-    </section>
+    </div>
   );
 }
