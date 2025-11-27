@@ -40,7 +40,7 @@ export default function Hero() {
           </a>
 
         <a
-            href="/cv.pdf"
+            href="/léo-bouat-CV-alternance.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center px-5 py-2.5 rounded-full text-sm font-medium
@@ -73,10 +73,12 @@ export default function Hero() {
           flex items-center justify-center"
         >
           <div className="h-40 w-40 md:h-52 md:w-52 rounded-2xl bg-slate-900/80 border border-slate-700 flex items-center justify-center">
-            {/* Tu pourras remplacer ça par une vraie image plus tard */}
-            <span className="text-xs text-slate-300 text-center px-4">
-              Ici, tu peux mettre ta photo, un avatar ou un logo.
-            </span>
+            {/* Remplace ce texte par ta photo (place le fichier dans `public/photo.jpeg`) */}
+            <img
+              src="/photo.jpeg"
+              alt="Photo de Boytyz"
+              className="h-full w-full object-cover rounded-2xl"
+            />
           </div>
         </div>
       </div>
