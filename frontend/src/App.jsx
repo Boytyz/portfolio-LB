@@ -1,12 +1,12 @@
 // src/App.jsx
-import Navbar from "./components/navbar";
-import Hero from "./components/hero";
-import About from "./components/about";
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import About from "./components/About";
 import Skills from "./components/skills";
-import Projects from "./components/projects";
-import Contact from "./components/contacts";
-import Footer from "./components/footer";
-import Formations from "./components/Formations";
+import Projects from "./components/Projects";
+import Contact from "./components/Contacts";
+import Footer from "./components/Footer";
+import Formations from "./components/formations";
 
 function App() {
   return (
