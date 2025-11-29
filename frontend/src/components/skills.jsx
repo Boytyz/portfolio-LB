@@ -7,7 +7,11 @@ const skillGroups = [
   },
   {
     title: "Outils & Écosystème",
-    skills: ["Git / GitHub", "Vite", "Node.js (bases)", "REST API"],
+    skills: ["Git / GitHub", "Vite", "Node.js", "REST API", "Docker", "Vercel"],
+  },
+  {
+    title: "Backend",
+    skills: ["Node.js", "Express", "MongoDB", "Mongoose", "solidity", "smart contracts", "nextjs" ],
   },
   {
     title: "Soft Skills",
@@ -31,7 +35,7 @@ export default function Skills() {
         </p>
       </header>
 
-      <div className="grid md:grid-cols-3 gap-6">
+      <div className="grid md:grid-cols-2 gap-6">
         {skillGroups.map((group) => (
           <div
             key={group.title}

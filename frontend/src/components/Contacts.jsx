@@ -23,7 +23,6 @@ export default function Contact() {
       `Nom : ${form.name}\nEmail : ${form.email}\n\nMessage :\n${form.message}`
     );
 
-    // 🔴 Remplace CETTE adresse par la tienne
     const mailto = `mailto:leobouat6@gmail.com?subject=${subject}&body=${body}`;
 
     window.location.href = mailto;
@@ -35,7 +34,7 @@ export default function Contact() {
       className="min-h-screen bg-gray-900 text-white flex flex-col justify-center items-center px-6 py-16"
     >
       <motion.h2
-        className="text-5xl font-bold mb-4 text-pink-400"
+        className="text-5xl font-bold mb-4 text-pink-500"
         initial={{ opacity: 0, y: -30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
@@ -44,7 +43,7 @@ export default function Contact() {
       </motion.h2>
 
       <motion.p
-        className="mb-8 text-gray-300 text-center max-w-xl"
+        className="mb-8 text-gray-100 text-center max-w-xl"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
@@ -67,12 +66,12 @@ export default function Contact() {
           <p className="text-gray-300">
             Tu peux aussi me joindre directement par email ou via mes réseaux :
           </p>
-          <ul className="space-y-2 text-pink-300">
+          <ul className="space-y-2 text-gray-100">
             <li>
               📧{" "}
               <a
-                
-                className="hover:underline"
+                href="mailto:leobouat6@gmail.com"
+                className="text-indigo-300 hover:text-indigo-100 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400"
               >
                 leobouat6@gmail.com
               </a>
@@ -83,7 +82,7 @@ export default function Contact() {
                 href="https://www.linkedin.com/in/l%C3%A9o-bouat-9b1a75269/"
                 target="_blank"
                 rel="noreferrer"
-                className="hover:underline"
+                className="text-indigo-300 hover:text-indigo-200 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400"
               >
                 Mon LinkedIn
               </a>
@@ -94,7 +93,7 @@ export default function Contact() {
                 href="https://github.com/Boytyz?tab=repositories"
                 target="_blank"
                 rel="noreferrer"
-                className="hover:underline"
+                className="text-indigo-300 hover:text-indigo-200 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400"
               >
                 Mon GitHub
               </a>
@@ -110,7 +109,11 @@ export default function Contact() {
           transition={{ duration: 0.8 }}
           onSubmit={handleSubmit}
         >
+          <label htmlFor="contact-name" className="text-sm text-gray-200">
+            Votre nom
+          </label>
           <input
+            id="contact-name"
             type="text"
             name="name"
             placeholder="Votre nom"
@@ -119,7 +122,12 @@ export default function Contact() {
             className="p-3 rounded-lg bg-white/10 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-pink-400"
             required
           />
+
+          <label htmlFor="contact-email" className="text-sm text-gray-200">
+            Votre email
+          </label>
           <input
+            id="contact-email"
             type="email"
             name="email"
             placeholder="Votre email"
@@ -128,7 +136,12 @@ export default function Contact() {
             className="p-3 rounded-lg bg-white/10 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-pink-400"
             required
           />
+
+          <label htmlFor="contact-message" className="text-sm text-gray-200">
+            Votre message
+          </label>
           <textarea
+            id="contact-message"
             name="message"
             placeholder="Votre message"
             rows="4"
@@ -142,9 +155,9 @@ export default function Contact() {
             type="submit"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="mt-4 bg-pink-500 text-white font-semibold py-3 px-6 rounded-lg hover:bg-pink-600 transition"
+            className="mt-4 bg-pink-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-pink-700 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-400"
           >
-            Envoyer ✉️
+            Envoyer 
           </motion.button>
         </motion.form>
       </div>

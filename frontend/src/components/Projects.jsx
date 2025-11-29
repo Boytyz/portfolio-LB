@@ -1,21 +1,24 @@
 // src/components/Projects.jsx
 
+import { motion } from "framer-motion";
+
 const projects = [
   {
-    title: "Portfolio LB",
+    title: "Application de location immobilière - Kasa",
     description:
-      "Mon portfolio personnel, développé avec React et Tailwind CSS. Présentation de mes projets et de mon profil.",
-    tech: ["React", "Tailwind CSS"],
-    link: "https://github.com/Boytyz/portfolio-LB",
-    type: "Personnel",
+      "Interface utilisateur dynamique avec React, React Router et Sass Composants réutilisables, gestion du routing et animations CSS",
+
+    tech: ["React", "Vite", "Sass", "Node.js"],
+    link: "https://github.com/Boytyz/projet-kasa",
+    type: "Formation",
   },
   {
-    title: "Projet Exemple",
+    title: "API de notation de livres - MonVieuxGrimoire",
     description:
-      "Un projet que tu pourras décrire ici (application web, landing page, dashboard...).",
-    tech: ["React", "API", "UI/UX"],
-    link: "#",
-    type: "Exemple",
+      "Développement du serveur Express connecté à MongoDB,Implémentation d’un système CRUD sécurisé et gestion des images, Architecture MVC et conformité aux principes GreenCode",
+    tech: ["JavaScript", "Node.js", "API REST", "Express", "MongoDB"],
+    link: "https://github.com/Boytyz/Mon-vieux-Grimoire-P6",
+    type: "Formation",
   },
 ];
 
@@ -36,11 +39,13 @@ export default function Projects() {
       </header>
 
       <div className="grid md:grid-cols-2 gap-6">
-        {projects.map((project) => (
-          <article
-            key={project.title}
-            className="group relative rounded-2xl border border-slate-800 bg-slate-900/40 p-5
-                       hover:border-indigo-500/70 hover:-translate-y-1 transition"
+        {projects.map((project, index) => (
+          <motion.div
+            key={index}
+            data-aos="zoom-in"
+            data-aos-delay={index * 150}
+            data-aos-duration="800"
+            className="bg-white/10 backdrop-blur-lg p-6 rounded-2xl shadow-md hover:shadow-pink-400/40 transition"
           >
             <div className="flex items-center justify-between gap-3 mb-3">
               <h3 className="text-lg font-semibold group-hover:text-indigo-400">
@@ -71,12 +76,12 @@ export default function Projects() {
                 href={project.link}
                 target="_blank"
                 rel="noreferrer"
-                className="text-sm text-indigo-400 hover:text-indigo-300 underline underline-offset-4"
+                className="text-sm text-indigo-300 hover:text-indigo-200 underline underline-offset-4"
               >
                 Voir le code
               </a>
             )}
-          </article>
+          </motion.div>
         ))}
       </div>
     </div>

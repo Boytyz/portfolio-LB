@@ -15,8 +15,8 @@ export default function About() {
         {/* Texte principal */}
         <div className="space-y-4 text-sm sm:text-base text-slate-300 leading-relaxed">
           <p>
-            Je m&apos;appelle <span className="text-slate-100 font-medium">Boytyz</span>, 
-            développeur web spécialisé en front-end avec React et Tailwind CSS. 
+            Je m&apos;appelle <span className="text-slate-100 font-medium">Bouat Léo</span>, 
+            développeur web spécialisé en back-end avec NodeJS et Express. 
             Je conçois des interfaces modernes, propres et orientées expérience utilisateur.
           </p>
           <p>
@@ -26,9 +26,9 @@ export default function About() {
             et des startups afin d&apos;apporter de la valeur via le produit.
           </p>
           <p>
-            Je suis aussi en constante progression sur l&apos;aspect 
-            <span className="text-slate-100 font-medium"> performance, SEO et bonnes pratiques</span>, 
-            afin de livrer des sites rapides et bien référencés.
+            En parallèle, je m’exerce quotidiennement grâce à la réalisation de projets personnels. J’ai pour objectif d’être le plus performant
+            possible et de ne pas me reposer sur mes acquis. Ayant toujours été curieux et autodidacte de nature, je cherche constamment à
+            apprendre et devenir meilleur dans les domaines qui me passionnent.
           </p>
         </div>
 
@@ -39,8 +39,8 @@ export default function About() {
               Ce que je recherche
             </h3>
             <p className="text-slate-300">
-              Opportunités en développement front-end, projets freelance ou 
-              alternance/stage pour renforcer mes compétences en React & Tailwind.
+              Opportunités en développement backend orienté Blockchain si possible, projets freelance ou 
+              alternance/stage pour renforcer mes compétences.
             </p>
           </div>
 

@@ -17,35 +17,30 @@ export default function Hero() {
         </h1>
 
         <p className="text-slate-300 max-w-xl text-sm sm:text-base">
-          Développeur front-end spécialisé en React et Tailwind CSS. J&apos;aime
-          construire des interfaces propres, performantes et faciles à
-          maintenir, adaptées aux besoins des entreprises.
+          J’ai pour ambition d’être développeur FullStack, avec une appétence pour le BackEnd.
+          Pour y parvenir, j’intègre l’ESGI ce qui va me permettre notamment d’améliorer mes compétences en BackEnd. 
         </p>
 
-        <div className="flex flex-wrap gap-4">
+        <div className="flex flex-col sm:flex-row gap-4 w-full">
           <a
             href="#projects"
-            className="inline-flex items-center px-5 py-2.5 rounded-full text-sm font-medium
-            bg-indigo-500 hover:bg-indigo-400 text-white transition"
+            className="flex w-full sm:w-auto justify-center items-center px-5 py-2.5 rounded-full text-sm font-medium bg-indigo-600 hover:bg-indigo-700 text-white transition focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300"
           >
             Voir mes projets
           </a>
 
-        <a
+          <a
             href="#contact"
-            className="inline-flex items-center px-5 py-2.5 rounded-full text-sm font-medium
-            border border-slate-600 hover:border-indigo-400 hover:text-indigo-300 transition"
+            className="flex w-full sm:w-auto justify-center items-center px-5 py-2.5 rounded-full text-sm font-medium bg-indigo-600 hover:bg-indigo-700 text-white transition focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300"
           >
             Me contacter
           </a>
 
-        <a
+          <a
             href="/léo-bouat-CV-alternance.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center px-5 py-2.5 rounded-full text-sm font-medium
-              border border-indigo-500 text-indigo-400 hover:bg-indigo-500 hover:text-white
-              transition"
+            className="flex w-full sm:w-auto justify-center items-center px-5 py-2.5 rounded-full text-sm font-medium bg-indigo-600 hover:bg-indigo-700 text-white transition focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300"
           >
             Voir mon CV
           </a>

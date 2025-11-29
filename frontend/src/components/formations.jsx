@@ -2,30 +2,30 @@
 
 const formations = [
   {
-    title: "Développement Web – Autoformation",
-    school: "Autodidacte / Projets personnels",
-    period: "2023 - Aujourd'hui",
+    title: "Développement Web et Web Mobiles",
+    school: "OpenClassrooms",
+    period: "Janvier 2025 - Octobre 2025",
     description:
-      "Apprentissage de React, JavaScript moderne et TailwindCSS à travers des projets concrets et de la pratique quotidienne.",
-    icon: "💻",
-    stack: ["React", "Tailwind CSS", "JavaScript", "Git / GitHub"],
+      "Développer un site web responsive et interactif et Gérer un projet web de la conception à la livraison",
+    icon: "",
+    stack: ["React", "html", "css", "node.js", "mongoDB", "JavaScript", "Git / GitHub", "méthodes agiles", "responsive design", "SE0", "accessibilité", "API REST", "Express",],
     logos: [
-      { name: "React", src: "/logos/react.svg" },
-      { name: "Tailwind", src: "/logos/tailwindcss.svg" },
-      { name: "JS", src: "/logos/javascript.svg" },
+      { name: "React", src: "/logo/react.svg" },
+      { name: "Tailwind", src: "/logo/tailwind.svg" },
+      { name: "JS", src: "/logo/javascript.svg" },
     ],
   },
   {
-    title: "IA & Machine Learning – En cours",
-    school: "Cours en ligne / Ressources spécialisées",
-    period: "2024 - En cours",
+    title: "Ingénieurie Blockchain – En cours",
+    school: "ESGI Paris",
+    period: "2025 - En cours",
     description:
-      "Étude des bases de l’IA : apprentissage supervisé, NLP, vision par ordinateur, avec un focus sur la pratique via projets.",
-    icon: "🧠",
-    stack: ["Python", "Machine Learning", "Deep Learning (bases)"],
+      "Formation spécialisée dans la conception, l’analyse et l’amélioration d’architectures blockchain. Les étudiants développent des compétences opérationnelles sur Bitcoin, Ethereum, la sécurité, le développement d’applications et les cas d’usage professionnels. Le cursus mène à des postes tels qu’architecte blockchain, consultant crypto ou chef de projet.",
+    icon: "",
+    stack: ["Docker", "Solidity", "Smart Contracts", "language C", "Python", "base de données SQL/noSQL"],
     logos: [
-      { name: "Python", src: "/logos/python.svg" },
-      { name: "ML", src: "/logos/ml.svg" },
+      { name: "Python", src: "/logo/python.svg" },
+      { name: "Docker", src: "/logo/docker.svg" },
     ],
   },
 ];

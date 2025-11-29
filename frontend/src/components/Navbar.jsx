@@ -13,6 +13,7 @@ const navLinks = [
 export default function Navbar() {
   const [active, setActive] = useState("home");
   const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   // Gérer le scroll pour :
   // - changer le style de la navbar
@@ -40,6 +41,21 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    const onResize = () => {
+      if (window.innerWidth >= 768) setMobileOpen(false);
+    };
+    const onKey = (e) => {
+      if (e.key === "Escape") setMobileOpen(false);
+    };
+    window.addEventListener("resize", onResize);
+    window.addEventListener("keydown", onKey);
+    return () => {
+      window.removeEventListener("resize", onResize);
+      window.removeEventListener("keydown", onKey);
+    };
+  }, []);
+
   const handleClick = (id) => {
     const el = document.getElementById(id);
     if (!el) return;
@@ -49,7 +65,7 @@ export default function Navbar() {
   return (
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all
-      ${scrolled ? "backdrop-blur bg-slate-950/70 border-b border-slate-800" : "bg-transparent"}`}
+      ${scrolled || mobileOpen ? "backdrop-blur bg-slate-950 border-b border-slate-800" : "bg-transparent"}`}
     >
       <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Logo / Nom */}
@@ -63,12 +79,12 @@ export default function Navbar() {
           {navLinks.map((link) => (
             <li key={link.id}>
               <button
-                onClick={() => handleClick(link.id)}
-                className={`transition-colors border-b-2 pb-0.5
+                onClick={() => { handleClick(link.id); setActive(link.id); }}
+                className={`transition-colors border-b-2 pb-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400
                   ${
                     active === link.id
-                      ? "text-indigo-400 border-indigo-400"
-                      : "text-slate-300 border-transparent hover:text-white"
+                      ? "bg-white text-slate-900 border-transparent rounded-md px-2 py-0.5 shadow-sm"
+                      : "bg-indigo-600 hover:bg-white hover:text-slate-900 rounded-md px-2 py-0.5"
                   }`}
               >
                 {link.label}
@@ -77,11 +93,41 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* TODO: plus tard → menu mobile burger */}
-        <button className="md:hidden text-sm text-slate-300 border border-slate-600 px-3 py-1 rounded-full">
+        {/* Menu mobile toggle */}
+        <button
+          onClick={() => setMobileOpen((s) => !s)}
+          aria-expanded={mobileOpen}
+          aria-controls="mobile-menu"
+          className={`md:hidden text-sm px-3 py-1 rounded-full shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400
+            ${mobileOpen ? "bg-indigo-600 text-white border border-indigo-600" : "text-slate-900 bg-white border border-slate-200"}`}
+        >
           Menu
         </button>
       </nav>
+
+      {/* Mobile dropdown */}
+      {mobileOpen && (
+        <div
+          id="mobile-menu"
+          role="menu"
+          className="md:hidden absolute right-4 top-16 z-40 bg-slate-900 border border-slate-800 shadow-md w-40 rounded-lg"
+          style={{ transformOrigin: "top right" }}
+        >
+          <ul className="flex flex-col p-3 gap-2">
+            {navLinks.map((link) => (
+              <li key={link.id}>
+                <button
+                  role="menuitem"
+                  onClick={() => { handleClick(link.id); setActive(link.id); setMobileOpen(false); }}
+                  className="w-full text-left px-4 py-2 rounded-md text-white bg-transparent hover:bg-indigo-600/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400"
+                >
+                  {link.label}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </header>
   );
 }
