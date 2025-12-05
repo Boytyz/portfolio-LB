@@ -5,12 +5,12 @@ export default function Hero() {
       {/* Colonne texte */}
       <div className="flex-1 space-y-6">
         <p className="text-xs uppercase tracking-[0.25em] text-indigo-400">
-          Développeur Web · React & Tailwind
+          Développeur Web · Backend
         </p>
 
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
-          Salut, moi c&apos;est{" "}
-          <span className="text-indigo-400">Boytyz</span>.
+          Bonjour, moi c&apos;est{" "}
+          <span className="text-indigo-400">Léo</span>.
           <br />
           Je conçois des interfaces web modernes
           <span className="text-slate-400"> pour le monde pro.</span>

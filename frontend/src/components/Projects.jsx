@@ -7,7 +7,7 @@ const projects = [
     title: "Application de location immobilière - Kasa",
     description:
       "Interface utilisateur dynamique avec React, React Router et Sass Composants réutilisables, gestion du routing et animations CSS",
-
+    image: "/projects/kasa.png", // ajouter le chemin vers l'image (placer dans public/projects)
     tech: ["React", "Vite", "Sass", "Node.js"],
     link: "https://github.com/Boytyz/projet-kasa",
     type: "Formation",
@@ -16,6 +16,7 @@ const projects = [
     title: "API de notation de livres - MonVieuxGrimoire",
     description:
       "Développement du serveur Express connecté à MongoDB,Implémentation d’un système CRUD sécurisé et gestion des images, Architecture MVC et conformité aux principes GreenCode",
+    image: "/projects/monvieuxgrimoire.png", // ajouter le chemin vers l'image
     tech: ["JavaScript", "Node.js", "API REST", "Express", "MongoDB"],
     link: "https://github.com/Boytyz/Mon-vieux-Grimoire-P6",
     type: "Formation",
@@ -45,8 +46,19 @@ export default function Projects() {
             data-aos="zoom-in"
             data-aos-delay={index * 150}
             data-aos-duration="800"
-            className="bg-white/10 backdrop-blur-lg p-6 rounded-2xl shadow-md hover:shadow-pink-400/40 transition"
+            className="group bg-white/10 backdrop-blur-lg p-6 rounded-2xl shadow-md hover:shadow-pink-400/40 transition"
           >
+            {/* image du projet (si fournie) */}
+            {project.image && (
+              <div className="mb-4 overflow-hidden rounded-lg">
+                <img
+                  src={project.image}
+                  alt={`Aperçu du projet ${project.title}`}
+                  className="w-full h-40 object-cover md:h-48"
+                />
+              </div>
+            )}
+
             <div className="flex items-center justify-between gap-3 mb-3">
               <h3 className="text-lg font-semibold group-hover:text-indigo-400">
                 {project.title}
