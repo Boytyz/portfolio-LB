@@ -7,7 +7,7 @@ const projects = [
     title: "Application de location immobilière - Kasa",
     description:
       "Interface utilisateur dynamique avec React, React Router et Sass Composants réutilisables, gestion du routing et animations CSS",
-    image: "/projects/kasa.png", // ajouter le chemin vers l'image (placer dans public/projects)
+    image: "/public/kasa.PNG", 
     tech: ["React", "Vite", "Sass", "Node.js"],
     link: "https://github.com/Boytyz/projet-kasa",
     type: "Formation",
@@ -16,7 +16,7 @@ const projects = [
     title: "API de notation de livres - MonVieuxGrimoire",
     description:
       "Développement du serveur Express connecté à MongoDB,Implémentation d’un système CRUD sécurisé et gestion des images, Architecture MVC et conformité aux principes GreenCode",
-    image: "/projects/monvieuxgrimoire.png", // ajouter le chemin vers l'image
+    image: "/public/MVG.PNG", 
     tech: ["JavaScript", "Node.js", "API REST", "Express", "MongoDB"],
     link: "https://github.com/Boytyz/Mon-vieux-Grimoire-P6",
     type: "Formation",
